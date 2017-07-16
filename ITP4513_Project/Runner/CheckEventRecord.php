@@ -10,15 +10,11 @@
 
 <?php
 
-  require_once("dbinfo.php");
-
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
-  $sql="SELECT * FROM `eventregister`";//change delete table name
+require_once("../dbinfo.php");
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+  $sql="SELECT * FROM `eventregister` WHERE `RunnerID`='$_SESSION[RunnerID]'";//change delete table name
 
   $result = mysqli_query($connection, $sql);
 
@@ -26,6 +22,7 @@
 
 
   if (mysqli_num_rows($result)>0){
+    echo "<h3>Event Record:</h3>";
     $table= <<< EOF
       <table border="1">
         <tr>
@@ -39,7 +36,7 @@ EOF;
 
   while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>
-            <td>$row[RunnerID]</td>            
+            <td>$row[RunnerID]</td>
             <td>$row[CheckInTime]</td>
             <td>$row[FinishTime]</td>
             <td>$row[TopSpeed]</td>
@@ -49,7 +46,8 @@ EOF;
   }
   echo "</table>";
   } else {
-    echo "no result";
+    echo "<h3>Event Record:</h3>";
+    echo "You do not any event record!";
   }
 
   if (isset($_GET["RegID"])){

@@ -1,6 +1,6 @@
 <?php
 
-  require_once("dbinfo.php");
+  require_once("../dbinfo.php");
 
   $connection=mysqli_connect($serverName,$userName,$password,$dbName);
 

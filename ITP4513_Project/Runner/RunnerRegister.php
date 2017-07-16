@@ -2,6 +2,11 @@
 <head>
   <title>RunnerRegister</title>
 </head>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 <body>
   <h3>Register Runner</h3>
   <form action="RunnerRegister.php" method="post">
@@ -24,9 +29,10 @@
     Country
     <input type="text" name="country" required="required" ><br><br>
     Profile Picture
-    <input type="text" name="ProfilePicture" required="required" ><br><br>
+    <input type="text" name="ProfilePicture"><br><br>
     <input type="submit">
     <input type="reset" value="Reset">
+    <button onclick="goBack()">Return</button>
   </form>
 
 </body>
@@ -34,13 +40,9 @@
 
 
 <?php
-  require_once("dbinfo.php");
+  require_once("../dbinfo.php");
   extract($_POST);
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
 
-  if(!$connection){
-    die("connection failed".mysqli_connect_error());
-  }
 
 
 if(!empty($RunnerID)){
@@ -49,6 +51,7 @@ if(!empty($RunnerID)){
 
   if (mysqli_num_rows($resultCheckRunnerEmail) > 0){
     echo "<h3>Record already exist!</h3>";
+
   }else {
     $sqlNewRunner="INSERT INTO `runner`(`RunnerID`,`Password`,`FirstName`,`LastName`,`Gender`,`DateOfBirth`,`Email`,`Country`,`ProfilePicture`) VALUES
      ('$RunnerID','$Password','$FName','$LName','$Gender','$DOB','$Email','$country','$ProfilePicture')";

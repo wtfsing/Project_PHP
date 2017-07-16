@@ -1,6 +1,11 @@
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 <?php
 
-  require_once("dbinfo.php");
+  require_once("../dbinfo.php");
 
   $connection=mysqli_connect($serverName,$userName,$password,$dbName);
 
@@ -23,6 +28,7 @@
 
   if (mysqli_affected_rows($connection)>0){
     echo "A record is updated successfully!";
+    ?><p><button onclick="goBack()">Return</button></p><?php
     header("Location: UpdateRunner(A).php");
   }else {
     echo "Error: failed to update a record!";

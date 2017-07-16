@@ -27,7 +27,7 @@
 
 
 <?php
-  require_once("dbinfo.php");
+  require_once("../dbinfo.php");
   extract($_POST);
   $connection=mysqli_connect($serverName,$userName,$password,$dbName);
 

@@ -4,22 +4,19 @@
 <script type="text/javascript">
   function setValue(value){
       document.getElementsById("RunnerID").value = value;
-      
+
+  }
+  function goBack() {
+      window.history.back();
   }
 </script>
 
 
 <?php
 
-  require_once("dbinfo.php");
-
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
-  $sql="SELECT * FROM `runner`";//change delete table name
+require_once("../dbinfo.php");
+  session_start();
+  $sql="SELECT * FROM `runner` WHERE `RunnerID`='$_SESSION[RunnerID]' AND `Password`='$_SESSION[Password]'";//change delete table name
 
   $result = mysqli_query($connection, $sql);
 
@@ -111,7 +108,10 @@ EOF;
         </form>
 EOF;
     echo $form;
+
   }
+  ?><p><form action="RunnerLogin.html"><button>Logout</button></form></p><?php
+
 
   function checkGender($Gender,$RunnerID){
     if ($Gender=="M"){
@@ -121,6 +121,7 @@ EOF;
     }
   }
 
+require_once("CheckEventRecord.php");
 
 
 
