@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+fieldset {
+    display: block;
+    margin:auto;
+
+
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 200px;
+    clear: both;
+    align-self: center;
+}
+h3{
+  text-align:center;
+}
+form{
+  text-align:center;
+}
+</style>
+<html>
+<head>
+  <title>Volunteer Login</title>
+</head>
+<body>
+  <fieldset>
+  <h3>Volunteer Login</h3>
+  <form action="VolunteerLogin.php" method="post">
+    Volunteer ID
+    <input type="text" name="VolunteerID" required="required"><br><br>
+    Password
+    <input type="text" name="Password" required="required">
+    <br><br>
+    <a href="VolunteerRegister.php">Register account...</a>
+    <input type="submit" value="Login">
+  </fieldset>
+  </form>
+
+</body>
+</html>

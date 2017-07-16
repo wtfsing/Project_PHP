@@ -12,12 +12,6 @@
 
   require_once("../dbinfo.php");
 
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
   $sql="SELECT * FROM `eventregister`";//change delete table name
 
   $result = mysqli_query($connection, $sql);
@@ -60,7 +54,8 @@ EOF;
   }
   echo "</table>";
   } else {
-    echo "no result";
+    echo "No Runners has been assign to you yet!<br><br>";
+    echo "<form action="."VolunteerFunctions.html"."><button>Return</button></form>";
   }
 
   if (isset($_GET["RegID"])){

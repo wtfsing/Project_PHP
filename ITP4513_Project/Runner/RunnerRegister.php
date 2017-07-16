@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>RunnerRegister</title>
+  <title>Registration - Runner</title>
 </head>
 <script>
 function goBack() {

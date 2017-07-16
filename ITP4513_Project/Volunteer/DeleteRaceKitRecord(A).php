@@ -2,12 +2,6 @@
 
   require_once("../dbinfo.php");
 
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
   $sql="SELECT * FROM `racekitchoice`";//change delete table name
 
   $result = mysqli_query($connection, $sql);
@@ -43,7 +37,13 @@ EOF;
     ";
   }
   echo "</table>";
+  echo "<br><br><form action="."VolunteerFunctions.html"."><button>Return</button></form>";
   } else {
-    echo "no result";
+    echo "<h3>Warning</h3>";
+    echo "There is no Racekit here!<br><br>";
+    echo "<a href='CreateRaceKit.php'>Create one!</a><br><br>";
+    echo "<form action="."VolunteerFunctions.html"."><button>Return</button></form>";
+
+
   }
 ?>

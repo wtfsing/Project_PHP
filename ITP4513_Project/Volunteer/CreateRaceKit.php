@@ -1,11 +1,37 @@
 <html>
+<style>
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 500px;
+    clear: both;
+}
+</style>
+<style type="text/css">
+.container {
+    width: 500px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
+}
+</style>
 <head>
   <title>CreateRaceKit</title>
 </head>
 <body>
-  <h3>CreateRaceKit</h3>
+  <h3>Create Race Kit</h3>
   <form action="CreateRaceKit.php" method="post">
-
+    <fieldset>
+      <legend>Racekit Informations:</legend>
+      <div class="container">
     <input type="hidden" name="RaceKitID" value="test" >
     Name
     <input type="text" name="Name" required="required" ><br><br>
@@ -16,11 +42,15 @@
     Photo
     <input type="text" name="Photo" required="required" ><br><br>
 
-
-    <input type="submit">
+    </div>
+    <input type="submit" value="Submit">
     <input type="reset" value="Reset">
+    <br><br>
   </form>
-
+  <form action="VolunteerFunctions.html">
+  <button>Return</button>
+    </fieldset>
+  </form>
 </body>
 </html>
 
@@ -28,11 +58,7 @@
 <?php
   require_once("../dbinfo.php");
   extract($_POST);
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
 
-  if(!$connection){
-    die("connection failed".mysqli_connect_error());
-  }
 
 
 

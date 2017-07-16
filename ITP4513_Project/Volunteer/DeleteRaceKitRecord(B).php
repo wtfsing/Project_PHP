@@ -2,12 +2,6 @@
 
   require_once("../dbinfo.php");
 
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
   $sql="DELETE FROM `racekitchoice` WHERE `RaceKitID`='$_GET[RaceKitID]'";
 
   $result = mysqli_query($connection, $sql);
