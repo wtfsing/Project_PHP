@@ -2,12 +2,6 @@
 
   require_once("../dbinfo.php");
 
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
   $sql="SELECT * FROM `sponsorrecord`";//change delete table name
 
   $result = mysqli_query($connection, $sql);

@@ -7,33 +7,70 @@ function goBack() {
     window.history.back();
 }
 </script>
-<body>
-  <h3>Register Runner</h3>
-  <form action="RunnerRegister.php" method="post">
+<style>
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 500px;
+    clear: both;
+}
+</style>
+<style type="text/css">
+.container {
+    width: 500px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
+}
 
+</style>
+<body>
+  <h3>Registration - Runner</h3>
+
+  <form action="RunnerRegister.php" method="post">
+    <fieldset>
+      <legend>Informations:</legend>
+      <div class="container">
     <input type="hidden" name="RunnerID" value="test" >
-    Email
-    <input type="text" name="Email" required="required" ><br><br>
-    Password
-    <input type="text" name="Password" required="required" ><br><br>
-    First Name
+    Email:
+    <input type="email" name="Email" required="required" ><br><br>
+    Password:
+    <input type="password" name="Password" required="required" ><br><br>
+    First Name:
     <input type="text" name="FName" required="required" ><br><br>
-    Last Name
+    Last Name:
     <input type="text" name="LName" required="required" ><br><br>
-    Gender
+    </div>
+    Gender:
     <input type="radio" name="Gender" value="M" checked="checked">M
     <input type="radio" name="Gender" value="F">F
     <br><br>
-    Date Of Birth
+    <div class="container">
+    Date Of Birth:
     <input type="date" name="DOB" max="2000-01-02" min="1979-12-31"><br><br>
-    Country
+    Country:
     <input type="text" name="country" required="required" ><br><br>
-    Profile Picture
+    Profile Picture:
     <input type="text" name="ProfilePicture"><br><br>
-    <input type="submit">
+    </div>
+    <input type="submit" value="Register">
     <input type="reset" value="Reset">
-    <button onclick="goBack()">Return</button>
+    <br><br>
   </form>
+  <form action="RunnerLogin.html">
+  <button>Return</button>
+    </fieldset>
+  </form>
+
+
 
 </body>
 </html>

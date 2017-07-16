@@ -26,11 +26,7 @@
 <?php
   require_once("../dbinfo.php");
   extract($_POST);
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
 
-  if(!$connection){
-    die("connection failed".mysqli_connect_error());
-  }
 
 if(!empty($CharityID)){
   $sqlCheckCharityName="SELECT * From `charity` WHERE `Name`='$Name'";

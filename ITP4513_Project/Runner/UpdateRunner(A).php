@@ -1,4 +1,28 @@
+<style>
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 500px;
+    clear: both;
+}
+</style>
+<style type="text/css">
+.container {
+    width: 500px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
+}
 
+</style>
 
 
 <script type="text/javascript">
@@ -24,6 +48,7 @@ require_once("../dbinfo.php");
 
 
   if (mysqli_num_rows($result)>0){
+    echo "<h3>Your Informations:</h3>";
     $table= <<< EOF
       <table border="1">
         <tr>
@@ -63,6 +88,10 @@ EOF;
     echo "no result";
   }
 
+  require_once("CheckEventRecord.php");
+  echo"<br><br>";
+  require_once("ViewPayment.php");
+
   if (isset($_GET["RunnerID"])){
       $sql="SELECT * FROM `runner` WHERE `RunnerID`='$_GET[RunnerID]'";
 
@@ -84,28 +113,35 @@ EOF;
       $form = <<< EOF
         <form action = "UpdateRunner(B).php" method = "GET">
           <br><br>
+          <fieldset>
+            <legend>Informations:</legend>
+            <div class="container">
           RunnerID
           <input type="text" name="RunnerID" id = "RunnerID" value="$RunnerID" readonly><br><br>
           VolunteerID
           <input type="text" name="VolunteerID" id="VolunteerID" value="$VolunteerID" readonly><br><br>
           Password
-          <input type="text" name="Password" id="Password" value="$Password" ><br><br>
+          <input type="password" name="Password" id="Password" value="$Password" ><br><br>
           FirstName
           <input type="text" name="FirstName" id="FirstName" value="$FirstName" ><br><br>
           LastName
           <input type="text" name="LastName" id="LastName" value="$LastName" ><br><br>
+          </div>
           Gender $radio<br><br>
+          <div class="container">
           DateOfBirth
           <input type="text" name="DateOfBirth" id="DateOfBirth" value="$DateOfBirth" ><br><br>
           Email
-          <input type="text" name="Email" id="Email" value="$Email" ><br><br>
+          <input type="email" name="Email" id="Email" value="$Email" ><br><br>
           Country
           <input type="text" name="Country" id="Country" value="$Country" ><br><br>
           ProfilePicture
           <input type="text" name="ProfilePicture" id="ProfilePicture" value="$ProfilePicture"><br><br>
+          </div>
           <a href='UpdateRunner(B).php?$RunnerID=$row[RunnerID]'><button onclick=setValue('RunnerID')>Update Record</button></a>
-          <input type="reset" onclick="window.location.href='UpdateRunner(A).php';" value="Cancel">
+          <input type="reset" onclick="window.location.href='UpdateRunner(A).php';" value="Cancel"><br><br>
         </form>
+          </fieldset>
 EOF;
     echo $form;
 
@@ -121,7 +157,7 @@ EOF;
     }
   }
 
-require_once("CheckEventRecord.php");
+
 
 
 

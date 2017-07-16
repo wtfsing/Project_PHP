@@ -47,7 +47,7 @@ EOF;
   echo "</table>";
   } else {
     echo "<h3>Event Record:</h3>";
-    echo "You do not any event record!";
+    echo "You do not have any event record!";
   }
 
   if (isset($_GET["RegID"])){

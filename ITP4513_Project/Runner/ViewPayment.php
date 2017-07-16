@@ -12,19 +12,13 @@
 
   require_once("../dbinfo.php");
 
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
   $sql="SELECT * FROM `eventregister`";//change delete table name
 
   $result = mysqli_query($connection, $sql);
 
   //print_r(mysqli_fetch_assoc($result));
 
-
+  echo "<h3>Payment Detail:</h3>";
   if (mysqli_num_rows($result)>0){
     $table= <<< EOF
       <table border="1">
@@ -46,7 +40,7 @@ EOF;
   }
   echo "</table>";
   } else {
-    echo "no result";
+    echo "You do not have any payment detail!";
   }
 
   if (isset($_GET["RegID"])){
