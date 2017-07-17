@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <style>
+fieldset {
+    display: block;
+    margin:auto;
+
+
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 300px;
+    clear: both;
+    align-self: center;
+}
 h3{
   text-align:center;
 }
@@ -10,9 +24,10 @@ form{
 </style>
 <html>
 <head>
-  <title>Admin - Functions</title>
+  <title>Volunteer - Functions</title>
 </head>
 <body>
+    <fieldset>
   <h3> Hello, As a Volunteer, You can:</h3>
     <br><br>
   <form action="CreateRaceKit.php">
@@ -26,9 +41,15 @@ form{
   <form action="UpdateRunnerEventRecords(A).php">
    <button>Update RunnerEvent Records</button>
   </form>
+  <br><br>
+<form action="SendRacekit.php">
+<button>Send Racekit</button>
+</form>
       <br><br>
   <form action="VolunteerLogin.html">
    <button>Logout</button>
   </form>
+  <br>
+</fieldset>
 </body>
 </html>

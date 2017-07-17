@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <style>
+fieldset {
+    display: block;
+    margin:auto;
+
+
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 300px;
+    clear: both;
+    align-self: center;
+}
 h3{
   text-align:center;
 }
@@ -13,10 +27,15 @@ form{
   <title>Admin - Functions</title>
 </head>
 <body>
+  <fieldset>
   <h3> Hello, As a admin, You can:</h3>
-    <br><br>
+    <br>
   <form action="CreateAndManageEvents.php">
    <button>Create Events</button>
+  </form>
+  <br><br>
+  <form action="ManageEvents.php">
+   <button>Manage Events</button>
   </form>
   <br><br>
   <form action="CreateCharityRecord.php">
@@ -26,5 +45,11 @@ form{
   <form action="DeleteSponsorRecord(A).php">
    <button>Delete Sponsor Records</button>
   </form>
+      <br><br>
+  <form action="ManageVandR.php">
+   <button>Manage Volunteers and Runners</button>
+  </form>
+  <br>
+</fieldset>
 </body>
 </html>

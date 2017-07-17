@@ -1,50 +1,41 @@
-
-
-
-<script type="text/javascript">
-  function setValue(value){
-      document.getElementsById("RegID").value = value;
-  }
-</script>
-
-
 <?php
 
   require_once("../dbinfo.php");
   if (session_status() == PHP_SESSION_NONE) {
-      session_start();
+    session_start();
   }
-  $sql="SELECT * FROM `eventregister` WHERE `PaymentConfirmed` = '0'
-  AND `RunnerID`='$_SESSION[RunnerID]'";
+  $sql="SELECT * FROM `EventRegister` WHERE `CheckInTime` IS NULL AND `RunnerID`='$_SESSION[RunnerID]'";//change delete table name
   $result = mysqli_query($connection, $sql);
 
-  echo "<h3>Payment Detail:</h3>";
   if (mysqli_num_rows($result)>0){
     $table= <<< EOF
       <table border="1">
         <tr>
-        <th>Payment</th>
-        <th>RegID</th>
+          <th>Delete</th>
+          <th>RegID</th>
           <th>RunnerID</th>
-          <th>PaymentTotal</th>
+          <th>EventID</th>
+          <th>RaceKitID</th>
         </tr>
 EOF;
   echo $table;
 
   while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>
-            <td><a href='MakePayment.php?RegID=$row[RegID]'>Make Payment</a></td>
+            <td><a href='EventDeRegister(B).php?RegID=$row[RegID]'>Delete Record</a></td>
             <td>$row[RegID]</td>
             <td>$row[RunnerID]</td>
-            <td>$row[PaymentTotal]</td>
+            <td>$row[EventID]</td>
+            <td>$row[RaceKitID]</td>
           </tr>
     ";
   }
   echo "</table>";
   } else {
-    echo "You do not have any payment detail!";
+    echo "You do not have any event record!";
   }
 ?>
+
 <form action="UpdateRunner(A).php">
 <br><button>Return</button>
 </form>

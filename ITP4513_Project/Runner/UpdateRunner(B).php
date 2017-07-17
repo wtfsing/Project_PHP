@@ -28,5 +28,4 @@ function goBack() {
     echo "Error: failed to update a record!";
   }
 
-
 ?>

@@ -88,7 +88,6 @@ if(!empty($RunnerID)){
 
   if (mysqli_num_rows($resultCheckRunnerEmail) > 0){
     echo "<h3>Record already exist!</h3>";
-
   }else {
     $sqlNewRunner="INSERT INTO `runner`(`RunnerID`,`Password`,`FirstName`,`LastName`,`Gender`,`DateOfBirth`,`Email`,`Country`,`ProfilePicture`) VALUES
      ('$RunnerID','$Password','$FName','$LName','$Gender','$DOB','$Email','$country','$ProfilePicture')";

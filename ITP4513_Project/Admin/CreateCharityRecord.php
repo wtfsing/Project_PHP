@@ -1,23 +1,54 @@
 <html>
+<style>
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 500px;
+    clear: both;
+}
+</style>
+<style type="text/css">
+.container {
+    width: 500px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
+}
+</style>
 <head>
   <title>Create Charity Record</title>
 </head>
 <body>
   <h3>Create Charity Record</h3>
   <form action="CreateCharityRecord.php" method="post">
-
+      <fieldset>
+        <legend>Charity Informations:</legend>
+        <div class="container">
     <input type="hidden" name="CharityID" value="test" >
     Charity Name
     <input type="text" name="Name" required="required" ><br><br>
     Charity Description
     <input type="text" name="Description" required="required" ><br><br>
     Charity WebsiteUrl
-    <input type="text" name="WebsiteUrl" required="required" ><br><br>
+    <input type="url" name="WebsiteUrl" required="required" ><br><br>
     Charity Logo
     <input type="text" name="Logo" required="required" ><br><br>
-
-    <input type="submit">
+      </div>
+    <input type="submit" value="Submit">
     <input type="reset" value="Reset">
+  </form>
+  <br><br>
+  <form action="AdminFunctions.html">
+  <button>Return</button>
+    </fieldset>
   </form>
 
 </body>

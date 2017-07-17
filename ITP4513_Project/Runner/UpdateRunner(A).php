@@ -21,7 +21,6 @@ fieldset {
     width: 100%;
     clear: both;
 }
-
 </style>
 
 
@@ -43,10 +42,7 @@ require_once("../dbinfo.php");
   $sql="SELECT * FROM `runner` WHERE `RunnerID`='$_SESSION[RunnerID]' AND `Password`='$_SESSION[Password]'";//change delete table name
 
   $result = mysqli_query($connection, $sql);
-
-  //print_r(mysqli_fetch_assoc($result));
-
-
+  
   if (mysqli_num_rows($result)>0){
     echo "<h3>Your Informations:</h3>";
     $table= <<< EOF
@@ -88,10 +84,15 @@ EOF;
     echo "no result";
   }
 
-  require_once("CheckEventRecord.php");
-  echo"<br><br>";
-  require_once("ViewPayment.php");
+  require_once("CheckEventRecord.php");?>
+  <form action="EventDeRegister.php">
+  <br><button>Cancel Event Registration</button>
+  </form>
+  <form action="ViewPayment.php">
+  <br><button>Make Payment</button>
+  </form>
 
+ <?php
   if (isset($_GET["RunnerID"])){
       $sql="SELECT * FROM `runner` WHERE `RunnerID`='$_GET[RunnerID]'";
 
@@ -156,9 +157,4 @@ EOF;
       return "<input type='radio' name='Gender' value='M'/>Male<input type='radio' name='Gender' value='F' checked='checked'/>Female";
     }
   }
-
-
-
-
-
 ?>

@@ -14,7 +14,7 @@ require_once("../dbinfo.php");
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-  $sql="SELECT * FROM `eventregister` WHERE `RunnerID`='$_SESSION[RunnerID]'";//change delete table name
+  $sql="SELECT * FROM `eventregister` WHERE `RunnerID`='$_SESSION[RunnerID]' AND `CheckInTime` IS NOT NULL";//change delete table name
 
   $result = mysqli_query($connection, $sql);
 
@@ -47,7 +47,7 @@ EOF;
   echo "</table>";
   } else {
     echo "<h3>Event Record:</h3>";
-    echo "You do not have any event record!";
+    echo "You do not have any finished event record!<br>";
   }
 
   if (isset($_GET["RegID"])){
@@ -86,6 +86,8 @@ EOF;
 EOF;
     echo $form;
   }
-
-
 ?>
+<br>
+<form action="EventRegister.php">
+<button>Register Event!</button>
+</form>

@@ -34,30 +34,81 @@ fieldset {
   echo "<h3>Event Registration:</h3>";
 
   if (mysqli_num_rows($eventresult)>0 && mysqli_num_rows($racekitresult)>0){
-    echo "<form action=","EventRegister.php"," method=","post",">";
-    echo "<fieldset>";
-    echo "<legend>Informations:</legend>";
-    echo "<div class=","container",">";
-    echo "Event: ";
-    echo "<select>";
-  while ($eventRow = mysqli_fetch_assoc($eventresult)) {
-    echo "<option id="."event"." value=",$eventRow['Name'],">",$eventRow['Name'],"</option>";
+    echo "<h3>Availble Event:</h3>";
+    $table= <<< EOF
+      <table border="1">
+        <tr>
+          <th>EventID</th>
+          <th>Name</th>
+          <th>Distance</th>
+          <th>Date Of Event</th>
+          <th>Start Time</th>
+          <th>Price</th>
+        </tr>
+EOF;
+  echo $table;
+  while ($row = mysqli_fetch_assoc($eventresult)) {
+    echo "<tr>
+            <td>$row[EventID]</td>
+            <td>$row[Name]</td>
+            <td>$row[Distance]</td>
+            <td>$row[DateOfEvent]</td>
+            <td>$row[TimeStart]</td>
+            <td>$row[Price]</td>
+          </tr>
+    ";
   }
-  echo"</select><br><br>";
-  echo "Racekit: ";
-  echo"<select>";
-  while ($racekitRow = mysqli_fetch_assoc($racekitresult)) {
-    echo "<option id="."racekit"." value=",$racekitRow['Name'],">",$racekitRow['Name'],"</option>";
-  }
-  echo"</select>";
-  echo "</div><br><br>";
-  echo "<input type=","submit"," value=","Submit",">";
-  echo " </form>";
-  echo " </fieldset>";
-  } else {
+echo "</table>";
+ echo "<h3>Availble RaceKit:</h3>";
+ $table= <<< EOF
+   <table border="1">
+     <tr>
+        <th>EventID</th>
+       <th>RaceKitID</th>
+       <th>Name</th>
+       <th>Description</th>
+       <th>Price</th>
+       <th>Photo</th>
+     </tr>
+EOF;
+echo $table;
+while ($row = mysqli_fetch_assoc($racekitresult)) {
+ echo "<tr>
+         <td>$row[EventID]</td>
+         <td>$row[RaceKitID]</td>
+         <td>$row[Name]</td>
+         <td>$row[Description]</td>
+         <td>$row[Price]</td>
+         <td>$row[Photo]</td>
+       </tr>
+ ";
+}
+echo "</table>";
+?>
+  <p>You can only choose the racekit that corrspond with the event.(Same eventID)</p>
+
+  <form action="EventRegister(B).php" method="post">
+  <fieldset>
+  <legend>Informations:</legend>
+  <div class="container">
+  <br>
+  <input type="hidden" name="RegID" value="test" >
+  Event ID:
+  <br>
+  <input type="number" name="EventID" required="required">
+  <br><br>
+  RaceKit ID:
+  <br>
+  <input type="number"  name="RaceKitID" required="required">
+</div><br><br>
+<input type="submit" value="Submit">
+</form>
+</fieldset>
+<?php
+  }else{
     echo "There is no event for you to participate!";
   }
-  echo "<form action=","UpdateRunner(A).php",">";
-  echo "<br><button>Return</button>";
-  echo "</form>";
-?>
+  ?>
+<form action="UpdateRunner(A).php">
+<br><button>Return</button>
+</form>

@@ -35,9 +35,9 @@ fieldset {
       <div class="container">
     <input type="hidden" name="SponsorID" value="test" >
     Email
-    <input type="text" name="Email" required="required" ><br><br>
+    <input type="email" name="Email" required="required" ><br><br>
     Password
-    <input type="text" name="Password" required="required" ><br><br>
+    <input type="password" name="Password" required="required" ><br><br>
     First Name
     <input type="text" name="FName" required="required" ><br><br>
     Last Name

@@ -38,9 +38,11 @@ fieldset {
     Description
     <input type="text" name="Description" required="required" ><br><br>
     Price
-    <input type="text" name="Price" required="required" ><br><br>
+    <input type="number" name="Price" required="required" ><br><br>
     Photo
     <input type="text" name="Photo" required="required" ><br><br>
+    EventID
+    <input type="text" name="EventID" required="required" ><br><br>
 
     </div>
     <input type="submit" value="Submit">
@@ -67,17 +69,19 @@ if(!empty($RaceKitID)){
   $sqlCheckracekit="SELECT * From `racekitchoice` WHERE `Name`='$Name'";
   $resultCheckracekit=mysqli_query($connection,$sqlCheckracekit);
 
+  $sqlCheckEventID="SELECT * From `event` WHERE `EventID` = $EventID";
+  $resultCheckEventID=mysqli_query($connection,$sqlCheckEventID);
+
   if (mysqli_num_rows($resultCheckracekit) > 0){
     echo "<h3>Record already exist!</h3>";
-  }else {
-    $sqlCheckEventID="SELECT * From `event`";
-    $resultCheckEventID=mysqli_query($connection,$sqlCheckEventID);
-
-    $EventID = mysqli_num_rows($resultCheckEventID);
+  }else if(mysqli_num_rows($resultCheckEventID) > 0){
     $sqlNewEvent="INSERT INTO `racekitchoice`(`RaceKitID`,`Name`,`Description`,`Price`,`Photo`,`EventID`) VALUES
      ('$RaceKitID','$Name','$Description','$Price','$Photo','$EventID')";
-     echo "<h3>A record is added successfully</h3>";
     $resultNewEvent=mysqli_query($connection,$sqlNewEvent);
+     echo "<h3>A record is added successfully</h3>";
+  }else
+    {
+    echo "<h3>EventID does not exist!</h3>";
   }
 }
  ?>

@@ -25,10 +25,10 @@ fieldset {
 
 </style>
 <head>
-  <title>Create And Manage Events</title>
+  <title>Create Events</title>
 </head>
 <body>
-  <h3>Create And Manage Events</h3>
+  <h3>Create Events</h3>
   <form action="CreateAndManageEvents.php" method="post">
     <fieldset>
       <legend>Event Informations:</legend>
@@ -47,6 +47,10 @@ fieldset {
       </div>
     <input type="submit" value="Submit">
     <input type="reset" value="Reset">
+  </form>
+  <br><br>
+  <form action="AdminFunctions.html">
+  <button>Return</button>
     </fieldset>
   </form>
 
