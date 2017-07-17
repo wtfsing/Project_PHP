@@ -2,12 +2,6 @@
 
   require_once("../dbinfo.php");
 
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
   $sql="UPDATE `sponsor`
         SET `Password` = '$_GET[Password]',
             `FirstName` = '$_GET[FirstName]',

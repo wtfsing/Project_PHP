@@ -1,11 +1,38 @@
 <html>
+<style>
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    width: 500px;
+    clear: both;
+}
+</style>
+<style type="text/css">
+.container {
+    width: 500px;
+    clear: both;
+}
+.container input {
+    width: 100%;
+    clear: both;
+}
+
+</style>
 <head>
   <title>SponsorRegister</title>
 </head>
 <body>
   <h3>Register Sponsor</h3>
   <form action="SponsorRegister.php" method="post">
-
+    <fieldset>
+      <legend>Informations:</legend>
+      <div class="container">
     <input type="hidden" name="SponsorID" value="test" >
     Email
     <input type="text" name="Email" required="required" ><br><br>
@@ -17,12 +44,16 @@
     <input type="text" name="LName" required="required" ><br><br>
     Company
     <input type="text" name="Company" required="required" ><br><br>
+      </div>
 
-
-    <input type="submit">
+    <input type="submit" value="Submit">
     <input type="reset" value="Reset">
+    <br><br>
   </form>
-
+  </fieldset>
+  <form action="SponsorLogin.html">
+  <button> Return </button>
+  </form>
 </body>
 </html>
 
@@ -30,11 +61,6 @@
 <?php
   require_once("../dbinfo.php");
   extract($_POST);
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection failed".mysqli_connect_error());
-  }
 
 
 if(!empty($SponsorID)){

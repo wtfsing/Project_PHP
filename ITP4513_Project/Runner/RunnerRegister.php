@@ -92,8 +92,14 @@ if(!empty($RunnerID)){
   }else {
     $sqlNewRunner="INSERT INTO `runner`(`RunnerID`,`Password`,`FirstName`,`LastName`,`Gender`,`DateOfBirth`,`Email`,`Country`,`ProfilePicture`) VALUES
      ('$RunnerID','$Password','$FName','$LName','$Gender','$DOB','$Email','$country','$ProfilePicture')";
-     echo "<h3>A record is added successfully</h3>";
     $resultNewRunner=mysqli_query($connection,$sqlNewRunner);
+    $sql="SELECT `RunnerID` From `runner` WHERE `Email`='$Email'";
+    $result = mysqli_query($connection,$sql);
+    if (mysqli_num_rows($result)>0){
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo "<h3>A record is added successfully,Your ID is ",$row['RunnerID'],"</h3>";
+      }
+    }
   }
 }
  ?>

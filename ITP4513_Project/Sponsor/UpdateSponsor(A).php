@@ -11,19 +11,11 @@
 <?php
 
   require_once("../dbinfo.php");
-
-  $connection=mysqli_connect($serverName,$userName,$password,$dbName);
-
-  if(!$connection){
-    die("connection fail".mysqli_connect_error());
-  }
-
-  $sql="SELECT * FROM `sponsor`";//change delete table name
+  session_start();
+  $sql="SELECT * FROM `sponsor` WHERE '$_SESSION[SponsorID]' AND `Password`='$_SESSION[Password]'";//change delete table name
 
   $result = mysqli_query($connection, $sql);
-
   //print_r(mysqli_fetch_assoc($result));
-
 
   if (mysqli_num_rows($result)>0){
     $table= <<< EOF
