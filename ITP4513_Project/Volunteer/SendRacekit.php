@@ -1,5 +1,8 @@
 <?php
+    session_start();
   require_once("../dbinfo.php");
+  $VolunteerID =  $_SESSION['VolunteerID'];
+
   $sql="SELECT * FROM `EventRegister` WHERE `RaceKitSent` = '0'";
   $result = mysqli_query($connection, $sql);
   if (mysqli_num_rows($result)>0){
@@ -32,8 +35,8 @@ EOF;
       $sql="UPDATE `eventregister` SET `RaceKitSent`='1' WHERE `RegID` = $_GET[RegID]";
       $result = mysqli_query($connection, $sql);
       if (mysqli_affected_rows($connection)>0){
-        echo "A record is updated successfully!";
         header("Location: SendRacekit.php");
+        echo "A record is updated successfully!";
       }else {
         echo "Error: failed to update a record!";
       }
